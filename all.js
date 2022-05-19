@@ -1,37 +1,35 @@
-list = document.querySelector('.list')
-nineNine();
-function nineNine() {
-    let answer = '';
-    let ary = [];
-    for (let i = 2; i < 10; i++) {
-        var str1 = '';
-        var str2 = '';
-        let total = '';
-        for (let j = 1; j < 10; j++) {
-            answer = i * j;
-            if(j==1){
-                str1 += "<div><h2>" + i + "</h2><p>" + i + " x " + j + " = " + answer + "</p></div>"
-            }
-            if (j < 4 && j>1) {
-                str1 += "<div><p>" + i + " x " + j + " = " + answer + "</p></div>"
-            }
-            else if (j < 9) {
-                str2 += "<div><p>" + i + " x " + j + " =  " + answer + "</p></div>"
-            }
-            else if (j == 9) {
-                str2 += "<div><p>" + i + " x " + j + " = " + answer + "</p></div>"
-                total = "<li class='col-3 border row d-flex'><div class='col-5 me-2'>" + str1 + "</div><div  class='mt-4 col-5'>" + str2 + "</div></li>"
+let second=document.querySelector('#second');
+let hour=document.querySelector('#hour');
+let minute=document.querySelector('#minute');
+setInterval(updateTime,1000)
+function updateTime(){
+    var d=new Date();
+    console.log(d)
+    h=d.getHours();
+    m=d.getMinutes();
+    s=d.getSeconds();
+    console.log('h:'+h);
+    console.log('m:'+m);
+    console.log('s:'+s);
 
-                ary.push(total)
-                console.log(total);
-            }
+    var setHours= (change12Hr(h)*30+m*0.5-90);
+    var setMinute=m*6+180;
+    var setSecond=s*6+180;
+    console.log(setHours);
+    console.log(setMinute);
+    console.log(setSecond);
 
-        }
+    hour.setAttribute('style',"transform :rotate("+setHours+"deg)"+";")
+    minute.setAttribute('style',"transform :rotate("+setMinute+"deg)"+";")
+    second.setAttribute('style',"transform :rotate("+setSecond+"deg)"+";")
+}
 
+function change12Hr(hours){
+    if(hours>12){
+        hours-=12
     }
-    let len = ary.length
-    for (let i = 0; i < len; i++) {
-        list.innerHTML += ary[i];
+    else if(hours==0){
+        hours=12
     }
-
+    return hours;
 }
