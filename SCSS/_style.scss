@@ -2,7 +2,7 @@
     /* Layout Properties */
 top: 0px;
 left: 0px;
-width: 1280px;
+max-width: 1280px;
 height: 800px;
 margin: 0 auto;
 /* UI Properties */
@@ -12,7 +12,7 @@ position: relative;
 }
 .clock{
     height: 800px;
-    width: 1280px;
+    max-width: 1280px;
     background-image: url(../images/clock-bg.svg);
     background-repeat: no-repeat;
     background-position: center;
